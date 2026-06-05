@@ -1,37 +1,40 @@
 import sys
 from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget
 from gui.home import HomePage
+from gui.validator import ValidatorPage 
 
-# We will uncomment these in the next steps as we build them!
-# from gui.validator import ValidatorPage 
+# We will uncomment this in the final step
 # from gui.simulator import SimulatorPage
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Smart Regex-Based Validator - TOA Project")
-        self.setFixedSize(800, 600) # Desktop application size
+        self.setFixedSize(800, 600)
         
-        # QStackedWidget allows us to switch between pages smoothly
         self.stacked_widget = QStackedWidget()
         self.setCentralWidget(self.stacked_widget)
         
-        # Initialize the Home Page
-        # We pass self.show_validator so the Home page's button can trigger it
+        # Initialize Pages
         self.home_page = HomePage(self.show_validator)
+        self.validator_page = ValidatorPage(self.show_simulator)
         
-        # Add page to the stack
+        # Add to stack
         self.stacked_widget.addWidget(self.home_page)
+        self.stacked_widget.addWidget(self.validator_page)
         
-        # Set Home Page as the first visible screen
         self.stacked_widget.setCurrentWidget(self.home_page)
 
     def show_validator(self):
-        # We will connect this to the real validator page in the next step.
-        print("Start button clicked! Ready to switch to the Validator Page...")
+        """Switches to the Validator Page."""
+        self.stacked_widget.setCurrentWidget(self.validator_page)
+        
+    def show_simulator(self, email, password):
+        """Will switch to the Simulator Page and pass the inputs."""
+        print(f"Ready to simulate DFA for Email: {email} | Password: {password}")
+        # We will build this connection in Step 9!
 
 if __name__ == "__main__":
-    # Standard PyQt6 initialization
     app = QApplication(sys.argv)
     window = MainWindow()
     window.show()
