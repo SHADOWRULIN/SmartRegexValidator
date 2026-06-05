@@ -5,40 +5,42 @@ class HomePage(QWidget):
     def __init__(self, switch_to_validator_callback):
         super().__init__()
         
-        # Set up a vertical layout, centered
         layout = QVBoxLayout()
         layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
-        # Title Label
         title = QLabel("Smart Regex Validator")
-        title.setStyleSheet("font-size: 32px; font-weight: bold; color: #2c3e50; margin-bottom: 10px;")
+        # Baltic Blue text
+        title.setStyleSheet("font-size: 36px; font-weight: bold; color: #235789; margin-bottom: 10px;")
         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
-        # Subtitle Label
         subtitle = QLabel("Validate Email and Password using DFA Simulation\nTheory of Automata Project")
-        subtitle.setStyleSheet("font-size: 18px; color: #7f8c8d; margin-bottom: 40px;")
+        subtitle.setStyleSheet("font-size: 18px; color: #020100; margin-bottom: 40px;")
         subtitle.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
-        # Start Button
         start_btn = QPushButton("Start Validation")
-        start_btn.setFixedSize(200, 50)
+        start_btn.setFixedSize(220, 55)
+        # Adding hover and click animation effects
         start_btn.setStyleSheet("""
             QPushButton {
-                background-color: #3498db;
-                color: white;
-                font-size: 16px;
+                background-color: #235789;
+                color: #FDFFFC;
+                font-size: 18px;
                 font-weight: bold;
                 border-radius: 8px;
+                border: 2px solid #235789;
             }
             QPushButton:hover {
-                background-color: #2980b9;
+                background-color: #FDFFFC;
+                color: #235789;
+            }
+            QPushButton:pressed {
+                background-color: #F1D302;
+                color: #020100;
+                border: 2px solid #F1D302;
             }
         """)
-        
-        # When clicked, trigger the function passed from main.py
         start_btn.clicked.connect(switch_to_validator_callback)
         
-        # Add everything to the layout
         layout.addWidget(title)
         layout.addWidget(subtitle)
         layout.addWidget(start_btn, alignment=Qt.AlignmentFlag.AlignCenter)
