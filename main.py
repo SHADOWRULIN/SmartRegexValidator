@@ -12,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Smart Regex-Based Validator - TOA Project")
+        self.setWindowTitle("Interactive DFA-Based Email & Password Validation System")
         
         self.setMinimumSize(900, 650)
         self.resize(1024, 768) 

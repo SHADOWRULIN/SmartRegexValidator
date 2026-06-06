@@ -141,8 +141,15 @@ class ValidatorPage(QWidget):
         email = self.email_input.text().strip()
         password = self.password_input.text().strip()
         
+        # Track if both fields have at least some text
+        has_input = True
+        
         self.email_result.show()
-        if validate_email(email):
+        if not email:
+            self.email_result.setText("⚠ Email field cannot be empty.")
+            self.email_result.setStyleSheet("color: #C1292E; font-size: 13px; font-weight: bold; margin-top: 2px;")
+            has_input = False
+        elif validate_email(email):
             self.email_result.setText("✓ Valid Email Address")
             self.email_result.setStyleSheet("color: #27ae60; font-size: 13px; font-weight: bold; margin-top: 2px;")
         else:
@@ -150,14 +157,22 @@ class ValidatorPage(QWidget):
             self.email_result.setStyleSheet("color: #C1292E; font-size: 13px; font-weight: bold; margin-top: 2px;")
             
         self.password_result.show()
-        if validate_password(password):
+        if not password:
+            self.password_result.setText("⚠ Password field cannot be empty.")
+            self.password_result.setStyleSheet("color: #C1292E; font-size: 13px; font-weight: bold; margin-top: 2px;")
+            has_input = False
+        elif validate_password(password):
             self.password_result.setText("✓ Strong Password")
             self.password_result.setStyleSheet("color: #27ae60; font-size: 13px; font-weight: bold; margin-top: 2px;")
         else:
             self.password_result.setText("✗ Invalid: Needs 8 chars, 1 Upper, 1 Lower, 1 Digit")
             self.password_result.setStyleSheet("color: #C1292E; font-size: 13px; font-weight: bold; margin-top: 2px;")
             
-        self.simulate_btn.show()
+        # Only show the simulation button if they actually typed something to simulate
+        if has_input:
+            self.simulate_btn.show()
+        else:
+            self.simulate_btn.hide()
 
     def trigger_simulation(self):
         email = self.email_input.text().strip()

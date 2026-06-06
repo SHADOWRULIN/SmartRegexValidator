@@ -8,7 +8,7 @@ class HomePage(QWidget):
         layout = QVBoxLayout()
         layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
-        title = QLabel("Smart Regex Validator")
+        title = QLabel("Interactive DFA Simulator")
         # Baltic Blue text
         title.setStyleSheet("font-size: 36px; font-weight: bold; color: #235789; margin-bottom: 10px;")
         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
