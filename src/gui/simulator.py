@@ -264,14 +264,16 @@ class SimulatorPage(QWidget):
         # 2. Update Tape & Image
         if step_idx == 0:
             self.update_tape(-1)
-            img_path = os.path.join(BASE_DIR, "assets", f"{self.current_prefix}_base.png")
+            # ADDED "diagrams" to the path here:
+            img_path = os.path.join(BASE_DIR, "assets", "diagrams", f"{self.current_prefix}_base.png")
             self.status_label.setText("Machine Halted. Ready for Input.")
             self.status_label.setStyleSheet("color: #020100; font-size: 18px; font-weight: bold;")
         else:
             self.update_tape(step_idx - 1)
             t_state = self.current_log[step_idx - 1]['to_state']
             safe_name = t_state.replace(" / ", "_").replace(" ", "_")
-            img_path = os.path.join(BASE_DIR, "assets", f"{self.current_prefix}_{safe_name}.png")
+            # ADDED "diagrams" to the path here:
+            img_path = os.path.join(BASE_DIR, "assets", "diagrams", f"{self.current_prefix}_{safe_name}.png")
             
         if os.path.exists(img_path):
             pixmap = QPixmap(img_path)

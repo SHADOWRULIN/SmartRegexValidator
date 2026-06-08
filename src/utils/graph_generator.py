@@ -1,9 +1,15 @@
 import os
 from graphviz import Digraph
 
-def ensure_assets_folder():
-    if not os.path.exists('assets'):
-        os.makedirs('assets')
+# Dynamically find the absolute path to the assets/diagrams folder
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DIAGRAMS_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, '..', 'assets', 'diagrams'))
+
+def ensure_diagrams_folder():
+    """Creates the assets/diagrams folder if it doesn't exist."""
+    if not os.path.exists(DIAGRAMS_DIR):
+        os.makedirs(DIAGRAMS_DIR)
+        print(f"Created directory: {DIAGRAMS_DIR}")
 
 def build_email_graph(highlight_state=None, filename="email_dfa"):
     dot = Digraph(comment='Email DFA', format='png')
@@ -40,7 +46,9 @@ def build_email_graph(highlight_state=None, filename="email_dfa"):
     dot.edge('q1', 'Dead', label=' . / @ ')
     dot.edge('q2', 'Dead', label=' @ / . ')
     
-    dot.render(f'assets/{filename}', cleanup=True)
+    # Save directly into src/assets/diagrams/
+    save_path = os.path.join(DIAGRAMS_DIR, filename)
+    dot.render(save_path, cleanup=True)
 
 def build_password_graph(highlight_state=None, filename="password_dfa"):
     dot = Digraph(comment='Password DFA', format='png')
@@ -90,10 +98,14 @@ def build_password_graph(highlight_state=None, filename="password_dfa"):
     # Even if they have all characters (q_ULD), it rejects if the string ends before 8 characters
     dot.edge('q_ULD', 'Rejected', label=' END\n(Len < 8) ', style='dashed', color='#7f8c8d', fontcolor='#7f8c8d')
             
-    dot.render(f'assets/{filename}', cleanup=True)
+    # Save directly into src/assets/diagrams/
+    save_path = os.path.join(DIAGRAMS_DIR, filename)
+    dot.render(save_path, cleanup=True)
 
 if __name__ == "__main__":
-    ensure_assets_folder()
+    ensure_diagrams_folder()
+    
+    print(f"Saving files to: {DIAGRAMS_DIR}\n")
     
     print("Generating High-Res Email DFA frames...")
     build_email_graph(filename="email_dfa_base")
@@ -106,4 +118,4 @@ if __name__ == "__main__":
     for state in ['q0', 'q_U', 'q_L', 'q_D', 'q_UL', 'q_UD', 'q_LD', 'q_ULD', 'Rejected']:
         build_password_graph(highlight_state=state, filename=f"password_dfa_{state}")
         
-    print("Success! High resolution connected animation frames generated.")
+    print("\nSuccess! High resolution connected animation frames generated in src/assets/diagrams.")
