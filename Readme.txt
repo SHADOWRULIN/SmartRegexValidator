@@ -2,8 +2,11 @@
 CSC205 – Theory of Automata: Course Project
 Interactive DFA-Based Email & Password Validation System
 =============================================================================
-Student Name: Muhammad Fahaz Khan
-Roll Number: 24SP-047-CS
+Group Member Name: 
+	1. Muhammad Fahaz Khan (24SP-047-CS)
+	2. Hassan (24SP-010-CS)
+	3. Fawwad (24SP-035-CS)
+	4. Saim (24SP-006-CS)
 University: UIT University
 
 PROJECT OVERVIEW
@@ -27,8 +30,8 @@ SETUP INSTRUCTIONS
 -----------------------------------------------------------------------------
 1. Extract the provided .zip folder to your local machine.
 2. Open your Command Prompt (CMD) or Terminal.
-3. Navigate to the "src" directory of the extracted folder:
-   cd path/to/Muhammad_Fahaz_Khan_Course_Project/src
+3. Navigate to the root directory of the extracted folder:
+   cd path/to/Muhammad_Fahaz_Khan_Course_Project
 4. (Optional but recommended) Create and activate a virtual environment:
    python -m venv venv
    venv\Scripts\activate   (On Windows)
@@ -38,7 +41,8 @@ SETUP INSTRUCTIONS
 
 HOW TO RUN THE SIMULATION
 -----------------------------------------------------------------------------
-1. Ensure your terminal is still inside the "src" folder.
+1. From the root folder, navigate into the "src" directory:
+   cd src
 2. Execute the main Python script:
    python main.py
 3. The PyQt6 graphical interface will launch.
@@ -47,6 +51,7 @@ HOW TO RUN THE SIMULATION
 5. Enter a test string into the input field and click "Start Automata".
 6. Use the playback controls (Next Step, Pause, Back Step) to visually trace 
    the state transitions on the screen and view the live log execution matrix.
-7. Click "Export Report" to save the simulation trace log to the /output folder.
+7. Click "Export Report" to save the simulation trace log. You can select the 
+   provided "output" folder to save your logs for easy reviewing.
 
 =============================================================================
