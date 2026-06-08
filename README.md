@@ -57,8 +57,11 @@ pip install -r requirements.txt
 Before running the simulator for the first time, you must generate the high-resolution animation frames:
 
 ```bash
-python diagrams/graph_generator.py
+# Navigate to the source code folder
+cd src
 
+# Generate the DFA diagram assets
+python utils/graph_generator.py
 ```
 
 Launch the application:
