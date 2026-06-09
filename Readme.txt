@@ -2,11 +2,7 @@
 CSC205 – Theory of Automata: Course Project
 Interactive DFA-Based Email & Password Validation System
 =============================================================================
-Group Member Name: 
-	1. Muhammad Fahaz Khan (24SP-047-CS)
-	2. Hassan (24SP-010-CS)
-	3. Fawwad (24SP-035-CS)
-	4. Saim (24SP-006-CS)
+Author: Muhammad Fahaz Khan
 University: UIT University
 
 PROJECT OVERVIEW
